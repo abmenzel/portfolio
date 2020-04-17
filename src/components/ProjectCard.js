@@ -1,25 +1,34 @@
 import React from "react"
 import Button from "../components/Button"
+import { Link } from "gatsby"
 import Img from 'gatsby-image'
 import styled from 'styled-components'
+import { lighten, darken } from 'polished'
 import Theme from "../styles/Theme"
 
-const Card = styled.article`
+const Card = styled(Link)`
     display:flex;
     flex-direction:column;
     flex-grow:1;
     background-color:white;
     border-radius:5px;
-    box-shadow:  5px 5px 28px #dedede, 
-    -5px -5px 28px #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.05);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-
-
+    color:initial;
+    background-image:none;
+    p{
+        color:#555;
+    }
     h3{
         text-transform:uppercase;
         font-weight:700;
         margin-top:0;
         margin-bottom:2px;
+    }
+
+    &:hover{
+        transform:scale(1.01);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.05), 0 10px 10px rgba(0,0,0,0.05);
     }
 `
 const Tag = styled.div`
@@ -76,7 +85,7 @@ function ProjectCard(props) {
     return(
     <Theme>
         <CardWrapper>
-            <Card>
+            <Card link={`/projects/${props.slug}`}>
                 <ImgWrapper fluid={props.fluid} />
                 <CardInner>
                     <h3>{props.title}</h3>
@@ -84,11 +93,11 @@ function ProjectCard(props) {
                     <summary dangerouslySetInnerHTML={{__html: props.excerpt}}></summary>
         {/*<Collaborator dangerouslySetInnerHTML={{__html: "In collaboration with " + props.collaborator}}></Collaborator>*/}
                     <div>
-                        <Button type="primary" label="View case" link={`/projects/${props.slug}`}></Button>
-                        <Button label="Live demo"  link="/test"></Button>
+                        <Button type="primary"  label="View case" link={`/projects/${props.slug}`} />
+                        {props.liveLink != "" && <Button label="Live demo" linkType="external" link={props.liveLink} />}
                     </div>
 
-                </CardInner>
+                </CardInner> 
             </Card>
         </CardWrapper>
     </Theme>

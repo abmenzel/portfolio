@@ -27,8 +27,7 @@ const StyledButton = styled(Link)`
 
 export default (props) => (
     <Theme>
-        <StyledButton type={props.type} to={props.link}>
-            {props.label}
-        </StyledButton>
+        {props.linkType != "external" && <StyledButton type={props.type} to={props.link}>{props.label}</StyledButton>}
+        {props.linkType == "external" && <StyledButton as="a" type={props.type} href={props.link}>{props.label}</StyledButton>}
     </Theme>
 )

@@ -4,25 +4,49 @@ import Layout from "../components/Layout"
 import Title from "../components/Title"
 import styled from 'styled-components'
 import ProjectCard from "../components/ProjectCard"
+import Img from 'gatsby-image'
 
 const Projects = styled.div`
     display:flex;
     flex-wrap:wrap;
 `
 
+const Container = styled.div`
+    text-align:${props => props.centered ? "center" : "left"};
+    margin-bottom:25px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+`
+
+const Intro = styled.div`
+    margin-bottom:125px;
+`
+const ImgWrapper = styled(Img)`
+    border-radius:50%;
+    max-width:200px;
+    max-height:200px;
+    margin:0 auto;
+`
+
 export default ({ data }) => (
 <Layout>
-    <div>
-        <h1>{data.datoCmsFrontpage.introTitle}</h1>
-        <div dangerouslySetInnerHTML={{__html: data.datoCmsFrontpage.introductionText}}></div>
-    </div>
+    <Container centered>
+        <Intro>
+            <ImgWrapper fluid={data.datoCmsFrontpage.image.fluid}/>
+            <h1>{data.datoCmsFrontpage.introTitle}</h1>
+            <div dangerouslySetInnerHTML={{__html: data.datoCmsFrontpage.introductionText}}></div>
+        </Intro>
 
-    <Title text={data.datoCmsFrontpage.workTitle}/>
+        <Title text={data.datoCmsFrontpage.workTitle}/>
+    </Container>
+
     <Projects>
     {data.allDatoCmsWork.edges.map(({node: work }) => (
         <ProjectCard 
         title={work.title}
-        slug={work.slug} 
+        slug={work.slug}
+        liveLink={work.liveLink} 
         label={work.tag} 
         excerpt={work.excerpt} 
         fluid={work.featuredImage.fluid} 
@@ -38,6 +62,11 @@ export const query = graphql`
             introTitle
             introductionText
             workTitle
+            image {
+                fluid(maxWidth: 350, imgixParams: { fm: "jpg", auto: "compress" }) {
+                    ...GatsbyDatoCmsSizes
+                    }
+                }
             }
         allDatoCmsWork {
             edges {
@@ -46,13 +75,14 @@ export const query = graphql`
                 title
                 tag
                 slug
+                liveLink
                 excerpt
                 collaborator
                 featuredImage {
                     fluid(maxWidth: 450, imgixParams: { fm: "jpg", auto: "compress" }) {
-                    ...GatsbyDatoCmsSizes
+                        ...GatsbyDatoCmsSizes
+                        }
                     }
-                }
                 }
             }
         }
