@@ -22,6 +22,7 @@ const Container = styled.div`
 const Intro = styled.div`
     margin-bottom:125px;
 `
+
 const ImgWrapper = styled(Img)`
     border-radius:50%;
     max-width:200px;

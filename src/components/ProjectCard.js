@@ -6,10 +6,18 @@ import styled from 'styled-components'
 import { lighten, darken } from 'polished'
 import Theme from "../styles/Theme"
 
+function routingCheck(e){ // Allows for external link inside wrapping router component
+    if(e.target.tagName.toLowerCase() === "a" && e.target.host !== window.location.host){
+        e.preventDefault();
+        window.open(e.target.href);
+    }
+}
+
 const Card = styled(Link)`
     display:flex;
     flex-direction:column;
     flex-grow:1;
+    overflow:hidden;
     background-color:white;
     border-radius:5px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.05);
@@ -60,20 +68,6 @@ const CardInner = styled.div`
     }
 `
 
-const Collaborator = styled.div`
-    display:flex;
-    color:#777;
-    font-size:0.85rem;
-    a{
-        color:#777;
-        background-image:none;
-        margin-left:5px;
-
-        &:hover{
-            color:${props => props.theme.colors.green};;
-        }
-    }
-`
 const ImgWrapper = styled(Img)`
     & > div{
         padding-bottom:56.25% !important;
@@ -85,7 +79,7 @@ function ProjectCard(props) {
     return(
     <Theme>
         <CardWrapper>
-            <Card link={`/projects/${props.slug}`}>
+            <Card onClick={routingCheck} to={`/projects/${props.slug}`}>
                 <ImgWrapper fluid={props.fluid} />
                 <CardInner>
                     <h3>{props.title}</h3>

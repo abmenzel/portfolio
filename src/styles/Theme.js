@@ -4,10 +4,14 @@ import { ThemeProvider } from "styled-components";
 const theme = {
     colors: {
         green: "#1ca086",
-        lightgreen: "#7DEBA9"
+        lightgreen: "#94ECBE", //earlier: #7DEBA9
+        dark: "#2F4858"
     },
     fonts: {
         sans: "Montserrat"
+    },
+    size: {
+        medium: "768px"
     }
 }
 

@@ -5,7 +5,7 @@ import { lighten, darken } from 'polished'
 import Theme from '../styles/Theme'
 
 const StyledButton = styled(Link)`
-    color:${props => (props.type == "primary") ? darken(.6, props.theme.colors.lightgreen) : "#333"};
+    color:${props => (props.type == "primary") ? darken(.6, props.theme.colors.lightgreen) : "#333"} !important;
     text-transform:uppercase;
     letter-spacing:1px;
     font-weight:700;
@@ -18,7 +18,9 @@ const StyledButton = styled(Link)`
     font-family:${props => props.theme.fonts.sans};
     font-size:0.75rem;
     background-color:${props => (props.type == "primary") ? props.theme.colors.lightgreen : "white"};
+    box-shadow:${props => (props.shadow) ? "0 14px 28px rgba(0,0,0,0.05), 0 10px 10px rgba(0,0,0,0.05)" : "none"};
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
     &:hover{
         color:initial;
         background-color:${props => (props.type == "primary") ? lighten(.05, props.theme.colors.lightgreen) : darken(.06, "white")};
@@ -27,7 +29,7 @@ const StyledButton = styled(Link)`
 
 export default (props) => (
     <Theme>
-        {props.linkType != "external" && <StyledButton type={props.type} to={props.link}>{props.label}</StyledButton>}
-        {props.linkType == "external" && <StyledButton as="a" type={props.type} href={props.link}>{props.label}</StyledButton>}
+        {props.linkType != "external" && <StyledButton type={props.type} shadow={props.shadow} to={props.link}>{props.label}</StyledButton>}
+        {props.linkType == "external" && <StyledButton as="a" type={props.type} shadow={props.shadow} href={props.link}>{props.label}</StyledButton>}
     </Theme>
 )

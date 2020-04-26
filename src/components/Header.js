@@ -4,30 +4,50 @@ import styled from 'styled-components'
 import Button from '../components/Button.js'
 import { lighten } from 'polished'
 import Theme from "../styles/Theme"
+import Layout from "../components/layout"
+
 
 const Header = styled.header`
-  padding:2rem;
   div{
+    padding:2rem 1rem;
     max-width:1344px;
     margin: 0 auto;
     display:flex;
     justify-content:space-between;
     align-items:center;
   }
+  @media screen and (max-width:440px){
+    h3{
+      font-size:0.8rem;
+    }
+  }
   ul{
     margin:0;
-  }
-  li{
-    margin:0;
+    @media screen and (max-width:440px){
+      a{
+        font-size:0.6rem;
+      }
+    }
+    a{
+      margin:0;
+    }
   }
 `
 
 const ListLink = props => (
-  <li style={{ display: `inline-block`, marginRight: `1rem` }}>
+  <StyledLi>
       {props.type != "button" && <StyledLink to={props.to}>{props.children}</StyledLink> }
-      {props.type == "button" && <Button type="primary" label={props.label} link={props.to} />}
-  </li>
+      {props.type == "button" && <Button shadow="true" type="primary" label={props.label} link={props.to} />}
+  </StyledLi>
 )
+const StyledLi= styled.li`
+  display:inline-block;
+  margin-right:1rem;
+  margin-bottom:0;
+  &:last-child{
+    margin-right:0;
+  }
+`
 
 const StyledLink = styled(Link)`
   text-transform:uppercase;
