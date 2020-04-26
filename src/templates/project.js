@@ -1,12 +1,11 @@
 import React from 'react'
-import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Img from 'gatsby-image'
 import Video from '../components/Video'
 import { graphql } from 'gatsby'
 import Layout from "../components/layout"
 import styled from 'styled-components'
-import { lighten, darken } from 'polished'
-import Theme from "../styles/Theme"
+import { lighten } from 'polished'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 
 const Tag = styled.div`
@@ -64,7 +63,7 @@ const Collaborator = styled.div`
     font-size:0.85rem;
     a{
         color:${lighten(.3,"black")};
-        background-image:none;
+        background-image:none !important;
         transition:0.2s ease-in-out;
         background-color:${lighten(.6,"#555")};
         padding:4px 8px;
@@ -111,8 +110,8 @@ function Block(props) {
 
 
 export default ({ data }) => (
-  <Theme>
     <Layout>
+      <HelmetDatoCms seo={data.datoCmsWork.seoMetaTags} />
       <TopRow>
         <ProjectInfo>
           <Title>{data.datoCmsWork.title}</Title>
@@ -136,7 +135,6 @@ export default ({ data }) => (
         }
       </Expanded>
     </Layout>
-  </Theme>
   )
   export const query = graphql`
   query WorkQuery($slug: String!) {
@@ -149,6 +147,9 @@ export default ({ data }) => (
       excerpt
       collaborator
       description
+      seoMetaTags{
+        ...GatsbyDatoCmsSeoMetaTags
+      }
       expanded {
         ... on DatoCmsMediaholder {
           model { apiKey }

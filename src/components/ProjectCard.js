@@ -3,8 +3,6 @@ import Button from "../components/Button"
 import { Link } from "gatsby"
 import Img from 'gatsby-image'
 import styled from 'styled-components'
-import { lighten, darken } from 'polished'
-import Theme from "../styles/Theme"
 
 function routingCheck(e){ // Allows for external link inside wrapping router component
     if(e.target.tagName.toLowerCase() === "a" && e.target.host !== window.location.host){
@@ -77,7 +75,6 @@ const ImgWrapper = styled(Img)`
 
 function ProjectCard(props) {
     return(
-    <Theme>
         <CardWrapper>
             <Card onClick={routingCheck} to={`/projects/${props.slug}`}>
                 <ImgWrapper fluid={props.fluid} />
@@ -94,8 +91,6 @@ function ProjectCard(props) {
                 </CardInner> 
             </Card>
         </CardWrapper>
-    </Theme>
-
     )
 }
 

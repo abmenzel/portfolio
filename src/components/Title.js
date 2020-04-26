@@ -1,7 +1,5 @@
 import React from "react"
 import styled from 'styled-components'
-import { lighten, darken } from 'polished'
-import Theme from '../styles/Theme'
 
 const Title = styled.div`
     h2{
@@ -17,11 +15,9 @@ const Title = styled.div`
 `
 
 export default (props) => (
-    <Theme>
         <Title id="projects">
             <h2>{props.text}</h2>
             <div></div>
         </Title>
-    </Theme>
 
 )

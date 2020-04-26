@@ -2,7 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from 'styled-components'
 import { lighten, darken } from 'polished'
-import Theme from '../styles/Theme'
 
 const StyledButton = styled(Link)`
     color:${props => (props.type == "primary") ? darken(.6, props.theme.colors.lightgreen) : "#333"} !important;
@@ -28,8 +27,8 @@ const StyledButton = styled(Link)`
 `
 
 export default (props) => (
-    <Theme>
+    <span>
         {props.linkType != "external" && <StyledButton type={props.type} shadow={props.shadow} to={props.link}>{props.label}</StyledButton>}
         {props.linkType == "external" && <StyledButton as="a" type={props.type} shadow={props.shadow} href={props.link}>{props.label}</StyledButton>}
-    </Theme>
+    </span>
 )

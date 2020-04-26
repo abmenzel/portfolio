@@ -5,6 +5,7 @@ import Title from "../components/Title"
 import styled from 'styled-components'
 import ProjectCard from "../components/ProjectCard"
 import Img from 'gatsby-image'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 const Projects = styled.div`
     display:flex;
@@ -32,6 +33,7 @@ const ImgWrapper = styled(Img)`
 
 export default ({ data }) => (
 <Layout>
+    <HelmetDatoCms seo={data.datoCmsFrontpage.seoMetaTags} />
     <Container centered>
         <Intro>
             <ImgWrapper fluid={data.datoCmsFrontpage.image.fluid}/>
@@ -63,6 +65,9 @@ export const query = graphql`
             introTitle
             introductionText
             workTitle
+            seoMetaTags{
+                ...GatsbyDatoCmsSeoMetaTags
+              }
             image {
                 fluid(maxWidth: 350, imgixParams: { fm: "jpg", auto: "compress" }) {
                     ...GatsbyDatoCmsSizes

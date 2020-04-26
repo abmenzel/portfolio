@@ -3,7 +3,6 @@ import { useStaticQuery, Link, graphql } from "gatsby"
 import styled from 'styled-components'
 import Button from '../components/Button.js'
 import { lighten } from 'polished'
-import Theme from "../styles/Theme"
 import Layout from "../components/layout"
 
 
@@ -75,22 +74,20 @@ export default () => {
         `
       )
     return (
-      <Theme>
-        <Header>
-          <div>
-            <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
-                <h3 style={{ display: `inline` }}>{data.site.siteMetadata.title}</h3>
-            </Link>
-            <nav>
-              <ul style={{ listStyle: `none`, float: `right` }}>
-                <ListLink to="/about/">About</ListLink>
-                <ListLink type="button" to="/#projects" label="Work" />
-              </ul>
-            </nav>
-          </div>
+      <Header>
+        <div>
+          <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
+              <h3 style={{ display: `inline` }}>{data.site.siteMetadata.title}</h3>
+          </Link>
+          <nav>
+            <ul style={{ listStyle: `none`, float: `right` }}>
+              <ListLink to="/about/">About</ListLink>
+              <ListLink type="button" to="/#projects" label="Work" />
+            </ul>
+          </nav>
+        </div>
 
-        </Header>      
-      </Theme>
+      </Header>      
     )
 }
 

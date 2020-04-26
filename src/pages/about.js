@@ -2,9 +2,8 @@ import React from "react"
 import { graphql } from 'gatsby'
 import Layout from "../components/layout"
 import styled from 'styled-components'
-import Img from 'gatsby-image'
-import Theme from "../styles/Theme"
-import { lighten, darken } from 'polished'
+import { darken } from 'polished'
+import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 const TopRow = styled.div`
   max-width:1080px;
@@ -58,8 +57,8 @@ const SkillIcon = (props) => {
 }
 
 const About = ({ data }) => (
-<Theme>
   <Layout>
+      <HelmetDatoCms seo={data.datoCmsAbout.seoMetaTags} />
       <TopRow>
         <div dangerouslySetInnerHTML={{__html: data.datoCmsAbout.title}} />
       </TopRow>
@@ -75,7 +74,6 @@ const About = ({ data }) => (
         }
       </Skills>
   </Layout>
-</Theme>
 )
 
 export default About
@@ -83,6 +81,9 @@ export default About
 export const query = graphql`
   query AboutQuery {
     datoCmsAbout {
+      seoMetaTags{
+        ...GatsbyDatoCmsSeoMetaTags
+      }
       title
       skills {
         ... on DatoCmsSkillset {

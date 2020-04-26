@@ -1,9 +1,7 @@
 import React from "react"
-import { useStaticQuery, Link, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import styled from 'styled-components'
-import { lighten, darken } from 'polished'
-import Theme from "../styles/Theme"
-import Button from "../components/Button"
+import { lighten } from 'polished'
 import Icon from "../styles/Icon"
 import Contact from "../components/Contact"
 
@@ -17,11 +15,11 @@ const Footer = styled.footer`
   @media screen and (min-width:${props => props.theme.size.medium}){
     padding:7rem 0 2rem;
   }
-  a{
+  div p a{
     color:${props => lighten(.55, props.theme.colors.dark)};
     text-decoration:none;
     border:none;
-    background-image:none;
+    background-image:none !important;
   }
 `
 const Copyright = styled.p`
@@ -35,6 +33,7 @@ const Socials = styled.div`
   flex-wrap:wrap;
   a{
     margin:0;
+    background-image:none;
   }
 `
 
@@ -65,20 +64,18 @@ export default () => {
         }
         `
       )
-    return (
-      <Theme>
-        <Footer>
-          <Contact className="contactWrapper"/>
-          <div dangerouslySetInnerHTML={{__html: data.datoCmsFooter.contact}}></div>
-          <Socials>
-          {data.allDatoCmsSocial.edges.map(({node: social }) => (
-            <Social 
-              to={social.url} src={social.icon.url} alt={social.site}
-            />
-          ))}
-          </Socials>
-          <Copyright>{data.datoCmsFooter.copyright}</Copyright>
-        </Footer>
-      </Theme>
+    return (      
+      <Footer>
+        <Contact className="contactWrapper"/>
+        <div dangerouslySetInnerHTML={{__html: data.datoCmsFooter.contact}}></div>
+        <Socials>
+        {data.allDatoCmsSocial.edges.map(({node: social }) => (
+          <Social 
+            to={social.url} src={social.icon.url} alt={social.site}
+          />
+        ))}
+        </Socials>
+        <Copyright>{data.datoCmsFooter.copyright}</Copyright>
+      </Footer>
     )
 }
