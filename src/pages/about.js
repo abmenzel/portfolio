@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from 'gatsby'
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import styled from 'styled-components'
 import { darken } from 'polished'
 import { HelmetDatoCms } from 'gatsby-source-datocms'

@@ -2,7 +2,7 @@ import React from 'react'
 import Img from 'gatsby-image'
 import Video from '../components/Video'
 import { graphql } from 'gatsby'
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import styled from 'styled-components'
 import { lighten } from 'polished'
 import { HelmetDatoCms } from 'gatsby-source-datocms'

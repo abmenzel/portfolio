@@ -3,7 +3,7 @@ import { useStaticQuery, Link, graphql } from "gatsby"
 import styled from 'styled-components'
 import Button from '../components/Button.js'
 import { lighten } from 'polished'
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 
 
 const Header = styled.header`
