@@ -47,12 +47,13 @@ export default ({ data }) => (
     <Projects>
     {data.allDatoCmsWork.edges.map(({node: work }) => (
         <ProjectCard 
+        id={work.id}
         title={work.title}
         slug={work.slug}
         liveLink={work.liveLink} 
         label={work.tag} 
         excerpt={work.excerpt} 
-        fluid={work.featuredImage.fluid} 
+        fluid={work.featuredImage.fluid}
         collaborator={work.collaborator} />
     ))}
     </Projects>

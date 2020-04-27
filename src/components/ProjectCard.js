@@ -75,7 +75,7 @@ const ImgWrapper = styled(Img)`
 
 function ProjectCard(props) {
     return(
-        <CardWrapper>
+        <CardWrapper key={props.id}>
             <Card onClick={routingCheck} to={`/projects/${props.slug}`}>
                 <ImgWrapper fluid={props.fluid} />
                 <CardInner>

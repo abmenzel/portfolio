@@ -5,12 +5,16 @@ import styled from 'styled-components'
 import Theme from "../styles/Theme"
 import { lighten } from 'polished'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
+import Typography from "typography"
 
 const Layout = styled.div`
     display:flex;
     flex-direction:column;
     min-height:100vh;
     background-color: #F5FAFB;
+    a{
+        text-shadow:none !important;
+    }
     p a{
         background-image:linear-gradient(120deg,${props => lighten(.15, props.theme.colors.lightgreen)},${props => lighten(.15, props.theme.colors.lightgreen)});
         background-repeat: no-repeat;
