@@ -57,7 +57,7 @@ export default () => (
     <Wrapper>
         <Contact>
             <h3>Have a project on your mind?</h3>
-            <p>Let's talk about it.<br/>Coffee is on me</p>
+            <p>Let's talk about it.<br/>Coffee is on me.</p>
             <Button label="Let's do it" linkType="external" link="mailto:alexander@menzel.dk" />
         </Contact>
     </Wrapper>    
