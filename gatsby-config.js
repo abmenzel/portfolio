@@ -36,8 +36,8 @@ module.exports = {
         // Enables Google Optimize using your container Id
         defer: false,
         // Any additional optional fields
-        sampleRate: 5,
-        siteSpeedSampleRate: 10,
+        sampleRate: 100,
+        siteSpeedSampleRate: 1,
         cookieDomain: "alexandermenzel.dk",
       },
     },
