@@ -18,6 +18,7 @@ const Footer = styled.footer`
   div p a{
     color:${props => lighten(.55, props.theme.colors.dark)};
     text-decoration:none;
+    text-shadow:none!important;
     border:none;
     background-image:none !important;
   }
