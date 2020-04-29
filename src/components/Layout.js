@@ -36,10 +36,10 @@ const Page = styled.div`
     padding: 0 1rem;
 `
 
-export default ({ children, data }) => (
+export default ({ children }) => (
 <Theme>
     <Layout>
-        <HelmetDatoCms favicon={data}>
+        <HelmetDatoCms >
             <script src="https://config.metomic.io/config.js?id=prj:f00db288-5df8-4ef5-a74b-c499685902a3" crossorigin charset="utf-8"></script>
             <script src="https://consent-manager.metomic.io/embed.js" crossorigin charset="utf-8"></script>
             <meta name=" theme-color" content="#2f4858" />
@@ -53,15 +53,3 @@ export default ({ children, data }) => (
     </Layout>
 </Theme>
 )
-export const query = graphql`
-    query LayoutQuery {
-        datoCmsSite {
-            globalSeo {
-              siteName
-            }
-            faviconMetaTags {
-              ...GatsbyDatoCmsFaviconMetaTags
-            }
-          }
-    }
-`

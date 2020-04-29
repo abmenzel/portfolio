@@ -116,7 +116,7 @@ function Block(props) {
 
 export default ({ data }) => (
     <Layout>
-      <HelmetDatoCms seo={data.datoCmsWork.seoMetaTags} />
+      <HelmetDatoCms favicon={data.datoCmsSite.faviconMetaTags} seo={data.datoCmsWork.seoMetaTags} />
       <TopRow>
         <ProjectInfo>
           <Title>{data.datoCmsWork.title}</Title>
@@ -143,6 +143,14 @@ export default ({ data }) => (
   )
   export const query = graphql`
   query WorkQuery($slug: String!) {
+    datoCmsSite {
+      globalSeo {
+        siteName
+      }
+      faviconMetaTags {
+        ...GatsbyDatoCmsFaviconMetaTags
+      }
+    }
     datoCmsWork(slug: { eq: $slug }) {
       title
       tag

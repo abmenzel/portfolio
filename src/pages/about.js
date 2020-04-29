@@ -57,7 +57,7 @@ const SkillIcon = (props) => {
 
 const About = ({ data }) => (
   <Layout>
-      <HelmetDatoCms seo={data.datoCmsAbout.seoMetaTags} />
+      <HelmetDatoCms favicon={data.datoCmsSite.faviconMetaTags} seo={data.datoCmsAbout.seoMetaTags} />
       <TopRow>
         <div dangerouslySetInnerHTML={{__html: data.datoCmsAbout.title}} />
       </TopRow>
@@ -79,6 +79,14 @@ export default About
 
 export const query = graphql`
   query AboutQuery {
+    datoCmsSite {
+      globalSeo {
+        siteName
+      }
+      faviconMetaTags {
+        ...GatsbyDatoCmsFaviconMetaTags
+      }
+    }
     datoCmsAbout {
       seoMetaTags{
         ...GatsbyDatoCmsSeoMetaTags
