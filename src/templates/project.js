@@ -56,11 +56,16 @@ const Title = styled.h1`
   text-transform:uppercase;
   font-weight:700;
   line-height:2rem;
+  margin-top:0;
+  @media screen and (min-width:${props => props.theme.size.medium}){
+    margin-top:2rem;
+  }
 `
 
 const Collaborator = styled.div`
     display:flex;
     font-size:0.85rem;
+    line-height:1.6rem;
     a{
         color:${lighten(.3,"black")};
         background-image:none !important;
@@ -68,7 +73,7 @@ const Collaborator = styled.div`
         background-color:${lighten(.6,"#555")};
         padding:4px 8px;
         border-radius:5px;
-
+        white-space: nowrap;
         &:hover{
             background-color:${lighten(.55,"#555")};
             color:black;

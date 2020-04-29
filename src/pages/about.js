@@ -41,7 +41,6 @@ const Skill = styled.div`
   }
   h4{
     font-size:0.9rem;
-    color:${props => darken(.25,props.theme.colors.lightgreen)};
   }
   p{
     font-size:0.9rem;

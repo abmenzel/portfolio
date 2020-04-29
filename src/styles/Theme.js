@@ -8,7 +8,7 @@ const theme = {
         dark: "#2F4858"
     },
     fonts: {
-        sans: "Montserrat"
+        sans: "'Montserrat',sans-serif"
     },
     size: {
         medium: "768px"

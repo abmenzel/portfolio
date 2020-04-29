@@ -39,7 +39,7 @@ const Socials = styled.div`
 `
 
 const Social = (props) => {
-  return <a href={props.to} target="_blank"><Icon src={props.src} alt={props.alt} /></a>
+  return <a href={props.to} target="_blank" rel="noopener"><Icon src={props.src} alt={props.alt} /></a>
 }
 
 export default () => {

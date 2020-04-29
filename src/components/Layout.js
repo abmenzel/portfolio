@@ -6,6 +6,7 @@ import Theme from "../styles/Theme"
 import { lighten } from 'polished'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Typography from "typography"
+import { graphql } from 'gatsby'
 
 const Layout = styled.div`
     display:flex;
@@ -36,12 +37,14 @@ const Page = styled.div`
     padding: 0 1rem;
 `
 
-export default ({ children }) => (
+export default ({ children, data }) => (
 <Theme>
     <Layout>
-        <HelmetDatoCms>
+        <HelmetDatoCms favicon={data}>
             <script src="https://config.metomic.io/config.js?id=prj:f00db288-5df8-4ef5-a74b-c499685902a3" crossorigin charset="utf-8"></script>
             <script src="https://consent-manager.metomic.io/embed.js" crossorigin charset="utf-8"></script>
+            <meta name=" theme-color" content="#2f4858" />
+            <html lang="en" />
         </HelmetDatoCms>
         <Header />
         <Page>
@@ -50,5 +53,16 @@ export default ({ children }) => (
         <Footer />
     </Layout>
 </Theme>
-
 )
+export const query = graphql`
+    query LayoutQuery {
+        datoCmsSite {
+            globalSeo {
+              siteName
+            }
+            faviconMetaTags {
+              ...GatsbyDatoCmsFaviconMetaTags
+            }
+          }
+    }
+`

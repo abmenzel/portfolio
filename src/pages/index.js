@@ -22,6 +22,11 @@ const Container = styled.div`
 
 const Intro = styled.div`
     margin-bottom:125px;
+
+    & > div:last-child{
+        max-width:600px;
+        margin:0 auto;
+    }
 `
 
 const ImgWrapper = styled(Img)`
@@ -33,7 +38,7 @@ const ImgWrapper = styled(Img)`
 
 export default ({ data }) => (
 <Layout>
-    <HelmetDatoCms seo={data.datoCmsFrontpage.seoMetaTags} />
+    <HelmetDatoCms favicon={data.datoCmsSite.faviconMetaTags} seo={data.datoCmsFrontpage.seoMetaTags} />
     <Container centered>
         <Intro>
             <ImgWrapper fluid={data.datoCmsFrontpage.image.fluid}/>
@@ -62,6 +67,14 @@ export default ({ data }) => (
 
 export const query = graphql`
     query IndexQuery {
+        datoCmsSite {
+            globalSeo {
+              siteName
+            }
+            faviconMetaTags {
+              ...GatsbyDatoCmsFaviconMetaTags
+            }
+          }
         datoCmsFrontpage {
             introTitle
             introductionText
