@@ -53,22 +53,6 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fontDisplay: 'block',
-        fonts: [
-          {
-            family: `Montserrat`,
-            variants: [`400`, `500`, '600', '700']
-          },
-          {
-            family: `Quattrocento Sans`,
-            variants: [`400`, `500`, '600']
-          },
-        ],
-      },
-    },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
   ]

@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import Theme from "../styles/Theme"
 import { lighten } from 'polished'
 import { HelmetDatoCms } from 'gatsby-source-datocms'
-import Typography from "typography"
 import { graphql } from 'gatsby'
 
 const Layout = styled.div`

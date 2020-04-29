@@ -39,7 +39,6 @@ const Card = styled(Link)`
 `
 const Tag = styled.div`
     text-transform:uppercase;
-    font-family:${props => props.theme.fonts.sans};
     letter-spacing:1px;
     font-size:0.75rem;
     margin-bottom:0.5rem;

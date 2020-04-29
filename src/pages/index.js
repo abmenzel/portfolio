@@ -51,8 +51,8 @@ export default ({ data }) => (
 
     <Projects>
     {data.allDatoCmsWork.edges.map(({node: work }) => (
-        <ProjectCard 
-        id={work.id}
+        <ProjectCard
+        key={work.id}
         title={work.title}
         slug={work.slug}
         liveLink={work.liveLink} 

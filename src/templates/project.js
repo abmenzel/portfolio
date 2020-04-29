@@ -10,7 +10,6 @@ import { HelmetDatoCms } from 'gatsby-source-datocms'
 
 const Tag = styled.div`
     text-transform:uppercase;
-    font-family:${props => props.theme.fonts.sans};
     letter-spacing:1px;
     font-size:0.75rem;
     margin-bottom:0.5rem;
@@ -57,6 +56,7 @@ const Title = styled.h1`
   font-weight:700;
   line-height:2rem;
   margin-top:0;
+  margin-bottom:1rem;
   @media screen and (min-width:${props => props.theme.size.medium}){
     margin-top:2rem;
   }

@@ -35,7 +35,7 @@ const Header = styled.header`
 
 const ListLink = props => (
   <StyledLi>
-      {props.type != "button" && <StyledLink to={props.to}>{props.children}</StyledLink> }
+      {props.type != "button" && <StyledLink className="sans btn" to={props.to}>{props.children}</StyledLink> }
       {props.type == "button" && <Button shadow="true" type="primary" label={props.label} link={props.to} />}
   </StyledLi>
 )
@@ -47,11 +47,15 @@ const StyledLi= styled.li`
     margin-right:0;
   }
 `
-
+const StyledTitle = styled(Link)`
+  background:none;
+  font-size:0.75rem;
+  font-weight:600;
+  color:black;
+`
 const StyledLink = styled(Link)`
   text-transform:uppercase;
   background:none;
-  font-family:${props => props.theme.fonts.sans};
   font-size:0.75rem;
   letter-spacing:1px;
   font-weight:700;
@@ -76,9 +80,9 @@ export default () => {
     return (
       <Header>
         <div>
-          <Link to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
+          <StyledTitle to="/" style={{ textShadow: `none`, backgroundImage: `none` }}>
               <h3 style={{ display: `inline` }}>{data.site.siteMetadata.title}</h3>
-          </Link>
+          </StyledTitle>
           <nav>
             <ul style={{ listStyle: `none`, float: `right` }}>
               <ListLink to="/about/">About</ListLink>
