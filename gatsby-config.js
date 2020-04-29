@@ -56,7 +56,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        fontDisplay: 'fallback',
+        fontDisplay: 'block',
         fonts: [
           {
             family: `Montserrat`,
