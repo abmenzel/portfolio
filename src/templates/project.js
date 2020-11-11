@@ -169,7 +169,7 @@ export default ({ data }) => (
           id
           perRow
           media {
-            fluid(maxWidth: 1000, imgixParams: { fm: "jpg", auto: "compress" }) {
+            fluid(maxWidth: 1600) {
               ...GatsbyDatoCmsSizes
               }
           }
@@ -182,7 +182,7 @@ export default ({ data }) => (
         url
       }
       featuredImage {
-          fluid(maxWidth: 450, imgixParams: { fm: "jpg", auto: "compress" }) {
+          fluid(maxWidth: 1600) {
               ...GatsbyDatoCmsSizes
               }
           }
