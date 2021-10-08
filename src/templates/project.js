@@ -57,7 +57,7 @@ const Title = styled.h1`
   margin-top: 0;
   margin-bottom: 1rem;
   @media screen and (min-width: ${props => props.theme.size.medium}) {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 `
 
@@ -121,11 +121,20 @@ export default ({ data }) => {
       <HelmetDatoCms
         favicon={data.datoCmsSite.faviconMetaTags}
         seo={data.datoCmsWork.seoMetaTags}
-      />
+        />
       <TopRow>
         <ProjectInfo>
           <Title>{data.datoCmsWork.title}</Title>
           <ProjectMeta>
+            <Tag>{data.datoCmsWork.tag}</Tag>
+            <Date>{data.datoCmsWork.date}</Date>
+          </ProjectMeta>
+          <Collaborator
+            dangerouslySetInnerHTML={{ __html: data.datoCmsWork.collaborator }}
+            ></Collaborator>
+          <div
+            dangerouslySetInnerHTML={{ __html: data.datoCmsWork.description }}
+            ></div>
             {liveLink != "" && (
               <Button
                 type="primary"
@@ -134,15 +143,6 @@ export default ({ data }) => {
                 link={liveLink}
               />
             )}
-            <Tag>{data.datoCmsWork.tag}</Tag>
-            <Date>{data.datoCmsWork.date}</Date>
-          </ProjectMeta>
-          <Collaborator
-            dangerouslySetInnerHTML={{ __html: data.datoCmsWork.collaborator }}
-          ></Collaborator>
-          <div
-            dangerouslySetInnerHTML={{ __html: data.datoCmsWork.description }}
-          ></div>
         </ProjectInfo>
         {data.datoCmsWork.featuredVideo ? (
           <VideoWrapper>
