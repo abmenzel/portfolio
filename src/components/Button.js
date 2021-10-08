@@ -27,6 +27,6 @@ const StyledButton = styled(Link)`
 export default (props) => (
     <span>
         {props.linkType != "external" && <StyledButton className="sans btn" type={props.type} shadow={props.shadow} to={props.link}>{props.label}</StyledButton>}
-        {props.linkType == "external" && <StyledButton className="sans btn" as="a" type={props.type} shadow={props.shadow} rel="noopener" href={props.link}>{props.label}</StyledButton>}
+        {props.linkType == "external" && <StyledButton className="sans btn" as="a" type={props.type} shadow={props.shadow} rel="noopener" target="_blank" href={props.link}>{props.label}</StyledButton>}
     </span>
 )
